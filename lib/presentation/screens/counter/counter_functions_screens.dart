@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../components/CustomButton.dart';
+
 class CounterFunctionScreen extends StatefulWidget {
   const CounterFunctionScreen({super.key});
 
@@ -18,6 +20,7 @@ class _CounterFunctionScreenState extends State<CounterFunctionScreen> {
 
   void _decrementCounter() {
     setState(() {
+      if (_counter == 0) return;
       _counter--;
     });
   }
@@ -57,17 +60,15 @@ class _CounterFunctionScreenState extends State<CounterFunctionScreen> {
         floatingActionButton: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            FloatingActionButton(
-              shape: const StadiumBorder(),
-              child: const Icon(Icons.plus_one),
+            CustomButton(
+              icon: Icons.plus_one,
               onPressed: () {
                 _incrementCounter();
               },
             ),
             const SizedBox(height: 10),
-            FloatingActionButton(
-              shape: const StadiumBorder(),
-              child: const Icon(Icons.exposure_minus_1),
+            CustomButton(
+              icon: Icons.exposure_minus_1,
               onPressed: () {
                 _decrementCounter();
               },
